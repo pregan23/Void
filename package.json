@@ -1,0 +1,23 @@
+{
+  "name": "void",
+  "version": "1.0.0",
+  "description": "A space for conversation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pregan23/Void.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pregan23/Void/issues"
+  },
+  "homepage": "https://github.com/pregan23/Void#readme",
+  "dependencies": {
+    "mongoose": "^6.2.8"
+  }
+}
