@@ -4,6 +4,8 @@ const router = Router();
 
 router.get('/', (req, res) => res.send('This is root!'))
 
-router.post('/', controllers.createUser)
+router.post('/login', controllers.checkUserName)
+
+router.post('/login', controllers.createUser)
 
 module.exports = router;
