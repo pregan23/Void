@@ -2,6 +2,14 @@ const User = require('../models/User.jsx');
 
 // const checkPassword = async (req, res) => {}
 
+// const getConversations = async (req, res) => {
+    
+//         const threads = await User.find( { userName: { $eq: userName}}, {conversations: 1})
+//         return res.status(201).json(threads)
+  
+    
+// }
+
 const createUser = async (req, res) => {
     try {
         const user = await new User(req.body)
@@ -19,7 +27,10 @@ const checkUserName = async (req,res) => {
     const { userName, password } = req.body
     // const noUser = await User.find( { userName: {$nin:userName}})
     const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} })
-    if (userExists) {return res.status(200).json(userExists)
+    if (userExists) {
+        // getConversations()
+        return res.status(201).json(userExists)
+        
         // if (userPass=userExists.password) {
 
         // }
