@@ -8,4 +8,6 @@ router.post('/login', controllers.checkUserName)
 
 router.post('/login', controllers.createUser)
 
+router.post('/myVoid', controllers.createConversation)
+
 module.exports = router;

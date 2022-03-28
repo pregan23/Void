@@ -1,4 +1,5 @@
 const User = require('../models/User.jsx');
+const Conversation = require('../models/Conversation.jsx')
 
 // const checkPassword = async (req, res) => {}
 
@@ -9,6 +10,12 @@ const User = require('../models/User.jsx');
   
     
 // }
+const createConversation = async (req, res) => {
+    const conversation = await new Conversation(req.body)
+    await conversation.save()
+    console.log('Conversation created')
+    return res.status(201).json({conversation})
+}
 
 const createUser = async (req, res) => {
     try {
@@ -26,7 +33,7 @@ const checkUserName = async (req,res) => {
     try{
     const { userName, password } = req.body
     // const noUser = await User.find( { userName: {$nin:userName}})
-    const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} })
+    const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} }, {conversations:1})
     if (userExists) {
         // getConversations()
         return res.status(201).json(userExists)
@@ -47,5 +54,6 @@ const checkUserName = async (req,res) => {
 
 module.exports = {
     createUser,
-    checkUserName
+    checkUserName,
+    createConversation
 }
