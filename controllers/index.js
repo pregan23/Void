@@ -1,5 +1,7 @@
 const User = require('../models/User.jsx');
 
+// const checkPassword = async (req, res) => {}
+
 const createUser = async (req, res) => {
     try {
         const user = await new User(req.body)
@@ -14,10 +16,16 @@ const createUser = async (req, res) => {
 
 // const checkUserName = async (req,res) => {
 //     try{
-//     const user = await User.find( { userName: req.params.userName })
+//     const { userName } = req.params
+//     const user = await User.find( { userName: userName })
+//     if (user) {return res.status(200).send('User found'),
+//     // checkPassword()
+//     }
+//     throw new Error('')
 //     } catch
 // }
 
 module.exports = {
-    createUser
+    createUser,
+    // checkUserName
 }
