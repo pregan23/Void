@@ -12,6 +12,12 @@ const createUser = async (req, res) => {
     }
 }
 
+// const checkUserName = async (req,res) => {
+//     try{
+//     const user = await User.find( { userName: req.params.userName })
+//     } catch
+// }
+
 module.exports = {
     createUser
 }
