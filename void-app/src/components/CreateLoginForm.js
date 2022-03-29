@@ -3,7 +3,6 @@ import React from 'react'
 const CreateLoginForm = (props) => {
     return (
         <div className = "form-wrapper">
-            <h1>Void</h1>
             <br/>
             <form onSubmit={props.login}>
                 <div>
