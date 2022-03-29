@@ -3,9 +3,10 @@ const Schema = mongoose.Schema
 
 const Conversation = new Schema(
     {
-        userIds: { type: Array, required: true },
+
         name: { type: String, required: true },
-        messages: { type: Array, required: true }
+        // messages: { type: Array, required: true },
+        user_ids: [{ type: Schema.Types.ObjectId, ref: 'user_id' }]
     },
     { timestamps: true },
 )

@@ -5,8 +5,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 const main = async () => {
     const users = [
-        { userName: 'User1', password: 'User1', conversations: [] },
-        { userName: 'User2', password: 'User2', conversations: [] }
+        { userName: 'User1', password: 'User1' },
+        { userName: 'User2', password: 'User2' }
     ]
 
     await User.insertMany(users)
