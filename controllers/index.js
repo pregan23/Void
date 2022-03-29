@@ -34,9 +34,10 @@ const checkUserName = async (req,res) => {
     const { userName, password } = req.body
     // const noUser = await User.find( { userName: {$nin:userName}})
     const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} })
-    if (userExists) {
+    const userId = userExists[0]._id
+    if (userId) {
         // getConversations()
-        const userId = userExists[0]._id
+        
         // if (userId === undefined) {
             
         // }
