@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import CreateLoginForm from './components/CreateLoginForm'
 import axios from 'axios'
 import './App.css';
 
@@ -17,9 +18,12 @@ function App() {
   const login = async (event) => {
     event.preventDefault()
     await axios
-    .post('http://localhost:3001/login', {
+    .post('http://localhost:3001/', {
       userName: userName,
       password: password
+    })
+    .catch(function (error) {
+      console.log(error)
     })
     
   }
@@ -37,7 +41,7 @@ function App() {
     <div className="App">
       <CreateLoginForm
       userName={userName}
-      password={userPass}
+      password={password}
       handleUserNameChange={handleUserNameChange}
       handlePasswordChange={handlePasswordChange}
       login={login}

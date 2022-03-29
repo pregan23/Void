@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/pregan23/Void#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "mongoose": "^6.2.8"
   },

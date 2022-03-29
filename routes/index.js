@@ -4,7 +4,7 @@ const router = Router();
 
 router.get('/', (req, res) => res.send('This is root!'))
 
-router.post('/login', controllers.checkUserName)
+router.post('/', controllers.checkUserName)
 
 router.post('/login', controllers.createUser)
 

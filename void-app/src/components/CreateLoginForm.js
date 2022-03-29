@@ -19,7 +19,7 @@ const CreateLoginForm = (props) => {
                     <label>Password:</label>
                     <input 
                     type="text"
-                    value={props.userPass}
+                    value={props.password}
                     placeholder="Enter Password..."
                     onChange={props.handlePasswordChange}                    
                     />
@@ -31,3 +31,5 @@ const CreateLoginForm = (props) => {
         </div>
     )
 }
+
+export default CreateLoginForm
