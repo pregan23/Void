@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import CreateLoginForm from './components/CreateLoginForm'
+import Conversation from './components/Conversation';
 import axios from 'axios'
 import './App.css';
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
 
@@ -12,6 +14,7 @@ function App() {
   const [edited, setEdited] = useState(false)
   const [isUser, setIsUser] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userId, setUserId] = useState('')
 
   // useEffect(() => {
 
@@ -24,21 +27,21 @@ function App() {
       userName: userName,
       password: password
     })
-    console.log(res.data)
+    setUserId(res.data)
     .catch(function (error) {
       console.log(error)
     })
     
   }
 
-  // const getConversations = async (req, res, id) => {
-  //   let threads = await axios
-  //   .post('http://localhost:3001/myVoid', {
-  //     user_id: id
-  //   })
-  //   console.log(threads)
+  const getConversations = async (req, res, id) => {
+    let threads = await axios
+    .post('http://localhost:3001/myVoid', {
+      user_id: userId
+    })
+    setConversations(threads.data)
 
-  // }
+  }
 
   const handleUserNameChange = (event) => {
     setUserName(event.target.value)
@@ -52,13 +55,25 @@ function App() {
   return (
     <div className="App">
       <h1>Void</h1>
-      <CreateLoginForm
-      userName={userName}
-      password={password}
-      handleUserNameChange={handleUserNameChange}
-      handlePasswordChange={handlePasswordChange}
-      login={login}
-      />
+      <Routes>
+        <Route path='/' element={<CreateLoginForm
+        userName={userName}
+        password={password}
+        handleUserNameChange={handleUserNameChange}
+        handlePasswordChange={handlePasswordChange}
+        login={login}
+        />} />
+        <Route path='myVoid'  element= {
+          conversations.map((conversation)=> (
+            <Conversation
+            key={conversation.name}
+            name={conversation.name} 
+            userId={userId}
+            />
+          ))
+            } />
+      </Routes>
+      
     </div>
   );
 }
