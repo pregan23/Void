@@ -29,6 +29,11 @@ const createUser = async (req, res) => {
     }
 }
 
+// const getConversations = async (req, res, _id) => {
+//     const threads = await Conversation.find( { user_ids: { $in: _id}})
+//     return res.status(201).json(threads)
+// }
+
 const checkUserName = async (req,res) => {
     try{
     const { userName, password } = req.body
@@ -36,17 +41,16 @@ const checkUserName = async (req,res) => {
     const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} })
     const userId = userExists[0]._id
     if (userId) {
-        console.log('we logged in!')
-        // getConversations()
+        // 
+        // getConversations(userId)
+        return res.status(201).json(userId)
+        
         
         // if (userId === undefined) {
             
         // }
-        // const getConversations = async (req, res, _id) => {
-        //     const threads = await Conversation.find( { _id: { $in: _id}})
-        //     return res.status(201).json(threads)
-        // }
-        return res.status(201).json(userId)
+        
+        
         
         // if (userPass=userExists.password) {
 
