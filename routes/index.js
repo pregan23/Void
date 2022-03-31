@@ -8,7 +8,7 @@ router.post('/', controllers.checkUserName)
 
 // router.post('/login', controllers.createUser)
 
-router.post('myVoid', controllers.getConversations)
+router.get('myVoid', controllers.getConversations)
 
 
 module.exports = router;

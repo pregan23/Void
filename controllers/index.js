@@ -4,8 +4,10 @@ const Conversation = require('../models/Conversation.jsx')
 // const checkPassword = async (req, res) => {}
 
 const getConversations = async (req, res) => {
+
+        
     
-        const threads = await Conversation.findMany( { _id: { $in: req.userId }})
+        const threads = await Conversation.findMany( { _id: { $in: ObjectId(req.userId) }})
         return res.status(201).json(threads)
   
     
@@ -39,11 +41,13 @@ const checkUserName = async (req,res) => {
     const { userName, password } = req.body
     // const noUser = await User.find( { userName: {$nin:userName}})
     const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} })
-    const userId = userExists[0]._id
-    if (userId) {
+    console.log(userExists)
+    // const userId = userExists[0]._id
+    // console.log(userId)
+    if (!!userExists.length) {
         // 
         // getConversations(userId)
-        return res.status(201).json(userId)
+        return res.status(201).json(userExists[0])
         
         
         // if (userId === undefined) {
@@ -57,9 +61,9 @@ const checkUserName = async (req,res) => {
         // }
     // checkPassword()
     }
-    // else if(noUser) {
-    //     return res.status(200).send('No such user.  Create an account.')
-    // }
+    else if(!!userExists.length) {
+        return res.status(200).send('No such user.  Create an account.')
+    }
     throw new Error('User not found.  You can create an account now by entering your desired password')
     
     } catch (error) {
