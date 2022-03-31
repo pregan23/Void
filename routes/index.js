@@ -6,9 +6,9 @@ router.get('/', (req, res) => res.send('This is root!'))
 
 router.post('/', controllers.checkUserName)
 
-router.post('/login', controllers.createUser)
+// router.post('/login', controllers.createUser)
 
-router.post('/myVoid', controllers.createConversation)
+router.post('myVoid', controllers.getConversations)
 
 
 module.exports = router;

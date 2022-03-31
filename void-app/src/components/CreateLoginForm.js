@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate,Link } from 'react-router-dom'
 
 const CreateLoginForm = (props) => {
     return (
@@ -24,7 +25,9 @@ const CreateLoginForm = (props) => {
                     />
                 </div>
                 <div className="button-wrapper">
+                    {/* <Link to={'/myVoid'}> */}
                     <button type="submit">Submit</button>
+                    {/* </Link> */}
                 </div>
             </form>
         </div>

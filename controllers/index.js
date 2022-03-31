@@ -3,13 +3,13 @@ const Conversation = require('../models/Conversation.jsx')
 
 // const checkPassword = async (req, res) => {}
 
-// const getConversations = async (req, res, _id) => {
+const getConversations = async (req, res, _id) => {
     
-//         const threads = await Conversation.findMany( { _id: { $in: userId }})
-//         return res.status(201).json(threads)
+        const threads = await Conversation.findMany( { _id: { $in: userId }})
+        return res.status(201).json(threads)
   
     
-// }
+}
 const createConversation = async (req, res) => {
     const conversation = await new Conversation(req.body)
     await conversation.save()
@@ -29,8 +29,8 @@ const createUser = async (req, res) => {
     }
 }
 
-// const getConversations = async (req, res, _id) => {
-//     const threads = await Conversation.find( { user_ids: { $in: _id}})
+// const getConversations = async (req, res) => {
+//     const threads = await Conversation.find( { user_ids: { $in: req._id}})
 //     return res.status(201).json(threads)
 // }
 
@@ -70,5 +70,6 @@ const checkUserName = async (req,res) => {
 module.exports = {
     createUser,
     checkUserName,
-    createConversation
+    // createConversation,
+    getConversations
 }
