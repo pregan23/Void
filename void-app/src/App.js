@@ -16,9 +16,11 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userId, setUserId] = useState('')
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // },[])
+    getConversations()
+
+  },[userId])
 
   const login = async (event) => {
     event.preventDefault()
@@ -29,22 +31,22 @@ function App() {
     })
     // setUserId(res.data)
     console.log(res.data)
-    setUserId('mr.bubbles')
-    console.log(userId)
+    setUserId(res.data)
+    
     .catch(function (error) {
       console.log(error)
     })
     
   }
 
-  // const getConversations = async (req, res, id) => {
-  //   let threads = await axios
-  //   .post('http://localhost:3001/myVoid', {
-  //     user_ids: userId
-  //   })
-  //   setConversations(threads.data)
+  const getConversations = async (req, res) => {
+    let threads = await axios
+    .post('http://localhost:3001/myVoid', {
+      user_ids: userId
+    })
+    setConversations(threads.data)
 
-  // }
+  }
 
   const handleUserNameChange = (event) => {
     setUserName(event.target.value)
