@@ -10,7 +10,7 @@ const Conversations = (props) => {
     const getConversations = async (req, res) => {
         let threads = await axios
         .get(`http://localhost:3001/myVoid/${id}`)
-        console.log(threads.data)
+        // console.log(threads.data)
         setConversations(threads.data)
     
       }
@@ -26,9 +26,14 @@ const Conversations = (props) => {
     
 
     return(
-        <li className='conversations'>
-            <h3>{props.name}</h3>
+        <div>
+        {conversations.map((conversation)=> (
+            <li className='conversations'>
+            <h3 key={conversation._id}>{conversation.name}</h3>
         </li>
+        ))}
+        
+        </div>
     )
 }
 

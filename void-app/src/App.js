@@ -26,7 +26,7 @@ function App() {
       password: password
     })
     // setUserId(res.data)
-    console.log(res.data)
+    // console.log(res.data)
     setUser(res.data)
     navigate(`/myVoid/${res.data._id}`)
 

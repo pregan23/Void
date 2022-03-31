@@ -1,7 +1,14 @@
 const User = require('../models/User');
 const Conversation = require('../models/Conversation')
+const Message = require('../models/Message')
 
 // const checkPassword = async (req, res) => {}
+
+const getMessages = async (req, res) => {
+
+    const messages = await Message.find( { conversation_id: { $eq: req.params.msg_id} })
+    return res.status(201).json(messages)
+}
 
 const getConversations = async (req, res) => {
 
@@ -74,6 +81,7 @@ const checkUserName = async (req,res) => {
 module.exports = {
     createUser,
     checkUserName,
-    // createConversation,
-    getConversations
+    createConversation,
+    getConversations,
+    getMessages
 }
