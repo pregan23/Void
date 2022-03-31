@@ -6,7 +6,7 @@ const Conversation = new Schema(
 
         name: { type: String, required: true },
         // messages: { type: Array, required: true },
-        user_ids: [{ type: Schema.Types.ObjectId, ref: 'user_id' }]
+        user_ids: [{ type: Schema.Types.ObjectId, ref: 'User' }]
     },
     { timestamps: true },
 )
