@@ -14,6 +14,7 @@ const Conversations = (props) => {
         setConversations(threads.data)
     
       }
+      
     
     useEffect(() => {
 
@@ -28,8 +29,8 @@ const Conversations = (props) => {
     return(
         <div>
         {conversations.map((conversation)=> (
-            <li className='conversations'>
-            <h3 key={conversation._id}>{conversation.name}</h3>
+        <li key={conversation._id} className='conversations'>
+            <h3 onClick={props.getMessages} >{conversation.name}</h3>
         </li>
         ))}
         

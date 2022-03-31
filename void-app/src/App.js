@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import CreateLoginForm from './components/CreateLoginForm'
+import CreateSignUpForm from './components/CreateSignUpForm';
 import Conversations from './components/Conversations';
 import axios from 'axios'
 import './App.css';
@@ -9,7 +10,7 @@ function App() {
 
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
-  const [userText, setUserText] = useState('')//what the user types for new message
+//  const [userText, setUserText] = useState('') //what the user types for new message
   const [edited, setEdited] = useState(false)
   const [isUser, setIsUser] = useState(false)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -25,14 +26,23 @@ function App() {
       userName: userName,
       password: password
     })
+    if(!!res.data) {
+      console.log(res)
+
+      setUser(res.data)
+      navigate(`/myVoid/${res.data._id}`)
+    }
+    else {
+      navigate('/signup')
+    }
+    // .catch(function (error) {
+    //   console.log(error)
+    // })
     // setUserId(res.data)
     // console.log(res.data)
-    setUser(res.data)
-    navigate(`/myVoid/${res.data._id}`)
+    
 
-    .catch(function (error) {
-      console.log(error)
-    })
+    
     
   }
 
@@ -57,6 +67,11 @@ function App() {
         handleUserNameChange={handleUserNameChange}
         handlePasswordChange={handlePasswordChange}
         login={login}
+        />} />
+        <Route path='signup' element={<CreateSignUpForm 
+
+
+        
         />} />
         <Route path='myVoid/:id'  element= {
           // conversations.map((conversation)=> (

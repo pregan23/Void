@@ -4,6 +4,8 @@ const Message = require('../models/Message')
 
 // const checkPassword = async (req, res) => {}
 
+
+
 const getMessages = async (req, res) => {
 
     const messages = await Message.find( { conversation_id: { $eq: req.params.msg_id} })
@@ -68,8 +70,9 @@ const checkUserName = async (req,res) => {
         // }
     // checkPassword()
     }
-    else if(!!userExists.length) {
-        return res.status(200).send('No such user.  Create an account.')
+    else if(!userExists.length) {
+
+        return res.status(200).send('')
     }
     throw new Error('User not found.  You can create an account now by entering your desired password')
     
@@ -84,4 +87,5 @@ module.exports = {
     createConversation,
     getConversations,
     getMessages
+    // sendMessage
 }
