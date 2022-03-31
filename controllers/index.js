@@ -32,6 +32,7 @@ const createUser = async (req, res) => {
     try {
         const user = await new User(req.body)
         await user.save()
+        console.log('user created!')
         return res.status(201).json({
             user,
         });

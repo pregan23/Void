@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import {  Route, Routes, useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 
 const CreateSignUpForm = (props) => {
 
     const [newUserName, setNewUserName] = useState('')
     const [newPassword, setNewPassword] = useState('')
+
+    const navigate = useNavigate()
 
     const handleNewUserNameChange = (event) => {
         setNewUserName(event.target.value)
@@ -15,13 +18,25 @@ const CreateSignUpForm = (props) => {
         setNewPassword(event.target.value)
     }
 
+    const signUp = async (event) => {
+        event.preventDefault()
+        let newUser = await axios
+        .post('http://localhost:3001/signup', {
+          userName: newUserName,
+          password: newPassword
+        })
+        navigate(`/`)
+        // navigate(`/myVoid/${newUser.data._id}`)
+        
+    }
+
 
 
     return (
         <div className = "form-wrapper">
         <br/>
         <h3>Create an account below. Type carefully!</h3>
-        <form onSubmit={props.signup}>
+        <form onSubmit={signUp}>
             <div>
                 <label>Username:</label>
                 <input 
