@@ -1,13 +1,13 @@
-const User = require('../models/User.jsx');
-const Conversation = require('../models/Conversation.jsx')
+const User = require('../models/User');
+const Conversation = require('../models/Conversation')
 
 // const checkPassword = async (req, res) => {}
 
 const getConversations = async (req, res) => {
 
         
-    
-        const threads = await Conversation.findMany( { _id: { $in: ObjectId(req.userId) }})
+        
+        const threads = await Conversation.find( { user_ids: { $in: req.params.id }})
         return res.status(201).json(threads)
   
     
