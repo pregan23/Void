@@ -14,7 +14,7 @@ console.log(secondId)
 }
 
 const deleteThread = async (req, res) => { 
-    await Conversation.findByIdAndDelete(   req.body._id )
+    await Conversation.findByIdAndDelete(   req.params._id )
     return res.status(201).send('deleted')
 }
 

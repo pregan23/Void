@@ -17,17 +17,23 @@ const Conversations = (props) => {
         navigate(`threads/${msgId}`)
     }
 
-    const getSecondId = async (req, res) => {
+    const getSecondId = async () => {
         let userId = await axios
         .get(`http://localhost:3001/myVoid/${id}/search/${otherUser}`)
         console.log(userId)
     }
 
-    const createConversation = async (req, res) => {
+    const deleteConversation = async (id) => {
+
+        await axios 
+        .delete(`http://localhost:3001/myVoid/${id}`)
+        console.log('deleted')
+        getConversations()
+
         
     }
 
-    const getConversations = async (req, res) => {
+    const getConversations = async () => {
         let threads = await axios
         .get(`http://localhost:3001/myVoid/${id}`)
         // console.log(threads.data)
@@ -51,6 +57,7 @@ const Conversations = (props) => {
         {conversations.map((conversation)=> (
         <li key={conversation._id} className='conversations'>
             <h3 onClick={() =>handleClick(conversation._id)} >{conversation.name}</h3>
+            <button onClick={() => deleteConversation(conversation._id)} >Delete</button>
 
             
 
