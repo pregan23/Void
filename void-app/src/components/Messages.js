@@ -7,9 +7,9 @@ const Messages = (props) => {
     const [messages, setMessages] = useState([])
     const [userText, setUserText] = useState('')
 
-    let { id, msg_id } = useParams()
+    const { id, msg_id } = useParams()
 
-    const getMessages = async (req, res) => {
+    const getMessages = async () => {
         let correspondence = await axios
         .get(`http://localhost:3001/myVoid/${id}/${msg_id}`)
         setMessages(correspondence.data) 
@@ -19,7 +19,23 @@ const Messages = (props) => {
         setUserText(event.target.value)
     }
 
-    const sendMessage = async (req, res) => {
+    const sendMessage = async () => {
+        await axios
+        .post(`http://localhost:3001/myVoid/${id}/thread/${msg_id}`,
+        {
+            content: userText,
+            author_id: id,
+            conversation_id: msg_id
+        }
+        .then(function (response) {
+            getMessages()
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+        )
+       
+        
         
 
     }
@@ -28,7 +44,7 @@ const Messages = (props) => {
 
         getMessages()
     
-      },[])
+      },[messages])
 
       return (
         <div>
@@ -39,7 +55,7 @@ const Messages = (props) => {
         ))}
         <form onSubmit={sendMessage}>
         <input onChange={handleInputChange}></input>
-        <button type='submit' ></button>
+        <button type='submit' >Send</button>
         </form>        
         </div>
       )

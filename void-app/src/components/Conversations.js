@@ -13,6 +13,10 @@ const Conversations = (props) => {
         setOtherUser(event.target.value) 
     }
 
+    const handleClick = (msgId) => {
+        navigate(`threads/${msgId}`)
+    }
+
     const getSecondId = async (req, res) => {
         let userId = await axios
         .get(`http://localhost:3001/myVoid/${id}/search/${otherUser}`)
@@ -46,9 +50,9 @@ const Conversations = (props) => {
         <div>
         {conversations.map((conversation)=> (
         <li key={conversation._id} className='conversations'>
-            <h3  >{conversation.name}</h3>
+            <h3 onClick={() =>handleClick(conversation._id)} >{conversation.name}</h3>
 
-            {/* onClick={navigate()} */}
+            
 
         </li>
         ))}

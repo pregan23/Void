@@ -10,6 +10,7 @@ const getUserId = async (req, res) => {
 const secondId = await User.find( { userName: {$eq: req.params.user_name} })
 console.log(secondId)
 
+
 }
 
 const deleteThread = async (req, res) => { 

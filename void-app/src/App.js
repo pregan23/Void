@@ -82,9 +82,10 @@ function App() {
           // ))
             } />
 
-        <Route path='myVoid/:id/:msg_id' element= {
+        <Route path='myVoid/:id/threads/:msg_id' element= {
           
-            <Messages        
+            <Messages 
+
           />
         } />
         
