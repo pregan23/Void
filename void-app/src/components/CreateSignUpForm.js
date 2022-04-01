@@ -35,7 +35,7 @@ const CreateSignUpForm = (props) => {
     return (
         <div className = "form-wrapper">
         <br/>
-        <h3>Create an account below. Type carefully!</h3>
+        <h3>Create an account below. Type carefully!  Upon submit, you will be redirected to the login page.</h3>
         <form onSubmit={signUp}>
             <div>
                 <label>Username:</label>

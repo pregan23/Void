@@ -5,6 +5,7 @@ const CreateLoginForm = (props) => {
     return (
         <div className = "form-wrapper">
             <br/>
+            <h3>Log in below.  If you do not yet have an account, simply click submit.</h3>
             <form onSubmit={props.login}>
                 <div>
                     <label>Username:</label>
