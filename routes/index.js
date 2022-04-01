@@ -12,6 +12,8 @@ router.get('/myVoid/:id', controllers.getConversations)
 
 router.post('/myVoid/:id', controllers.createConversation)
 
+// router.delete('/myVoid/:id', controllers.deleteThread)
+
 router.get('/myVoid/:id/:msg_id', controllers.getMessages)
 
 router.get('/myVoid/:id/search/:user_name', controllers.getUserId)

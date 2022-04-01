@@ -10,6 +10,8 @@ const secondId = await User.find( { userName: {$eq: req.params.user_name} })
 
 }
 
+// const deleteThread = await Conversation.findByIdAndDelete( {_id: {$eq: }})
+
 const getMessages = async (req, res) => {
 
     const messages = await Message.find( { conversation_id: { $eq: req.params.msg_id} })
