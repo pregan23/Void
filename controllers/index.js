@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Conversation = require('../models/Conversation')
-const Message = require('../models/Message')
+const Message = require('../models/Message');
+const req = require('express/lib/request');
 
 // const checkPassword = async (req, res) => {}
 
@@ -10,7 +11,10 @@ const secondId = await User.find( { userName: {$eq: req.params.user_name} })
 
 }
 
-// const deleteThread = await Conversation.findByIdAndDelete( {_id: {$eq: }})
+// const deleteThread = async (req, res) => { 
+//     await Conversation.findByIdAndDelete( {_id: {$in: req.body }})
+//     return res.status(201).send('deleted')
+// }
 
 const getMessages = async (req, res) => {
 
@@ -95,5 +99,6 @@ module.exports = {
     getConversations,
     getMessages,
     getUserId
+    // deleteThread
     // sendMessage
 }
