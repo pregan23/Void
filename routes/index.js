@@ -12,13 +12,15 @@ router.get('/myVoid/:id', controllers.getConversations)
 
 router.post('/myVoid/:id', controllers.createConversation)
 
-// router.delete('/myVoid/:id', controllers.deleteThread)
+router.delete('/myVoid/:id', controllers.deleteThread)
 
 router.get('/myVoid/:id/:msg_id', controllers.getMessages)
 
 router.get('/myVoid/:id/search/:user_name', controllers.getUserId)
 
-// router.post('/myVoid/:id/:msg_id', controllers.sendMessage)
+router.post('/myVoid/:id/thread/:msg_id', controllers.sendMessage)
+
+router.put('/message/:id', controllers.updateMessage)
 
 
 module.exports = router;

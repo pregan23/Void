@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import CreateLoginForm from './components/CreateLoginForm'
 import CreateSignUpForm from './components/CreateSignUpForm';
 import Conversations from './components/Conversations';
-import Messages from './components/Messagesfo'
+import Messages from './components/Messages'
 import axios from 'axios'
 import './App.css';
 import { Routes, Route, useNavigate } from 'react-router-dom'

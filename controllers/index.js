@@ -8,13 +8,14 @@ const req = require('express/lib/request');
 const getUserId = async (req, res) => {
 
 const secondId = await User.find( { userName: {$eq: req.params.user_name} })
+console.log(secondId)
 
 }
 
-// const deleteThread = async (req, res) => { 
-//     await Conversation.findByIdAndDelete( {_id: {$in: req.body }})
-//     return res.status(201).send('deleted')
-// }
+const deleteThread = async (req, res) => { 
+    await Conversation.findByIdAndDelete(   req.body._id )
+    return res.status(201).send('deleted')
+}
 
 const getMessages = async (req, res) => {
 
@@ -31,6 +32,23 @@ const getConversations = async (req, res) => {
   
     
 }
+
+const sendMessage = async (req, res) => {
+    console.log(req.body, 'here is the reqbody')
+    const message = await new Message(req.body)
+    await message.save()
+    console.log('message created')
+    return res.status(200).json(message)
+}
+
+const updateMessage = async (req, res) => {
+    const { id } = req.params
+    console.log(req.body, 'here is the reqbody')
+    const edit = await Message.findByIdAndUpdate( id, {"content": req.body.content} )
+    console.log('message edited')
+    return res.status(200).json(edit)
+}
+
 const createConversation = async (req, res) => {
     const conversation = await new Conversation(req.body)
     await conversation.save()
@@ -98,7 +116,8 @@ module.exports = {
     createConversation,
     getConversations,
     getMessages,
-    getUserId
-    // deleteThread
-    // sendMessage
+    getUserId,
+    deleteThread,
+    sendMessage,
+    updateMessage
 }
