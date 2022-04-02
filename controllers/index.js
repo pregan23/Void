@@ -8,7 +8,7 @@ const req = require('express/lib/request');
 const getUserId = async (req, res) => {
 
 const secondId = await User.find( { userName: {$eq: req.params.user_name} })
-console.log(secondId)
+res.status(201).json(secondId[0]._id)
 
 
 }
