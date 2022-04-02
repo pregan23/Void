@@ -21,33 +21,31 @@ const Messages = (props) => {
         setUserText(event.target.value)
     }
 
-    const editMessage = async () => {
-        await axios .put(`http://localhost:3001/message/62470449c2b054a90622ac32`,
+    // const editMessage = async () => {
+    //     await axios .put(`http://localhost:3001/message/62470449c2b054a90622ac32`,
        
-        {content: userText}
-        )
-    }
-
-    // const sendMessage = async () => {
-    //     await axios
-    //     .post(`http://localhost:3001/myVoid/${id}/thread/${msg_id}`,
-    //     {
-    //         content: userText,
-    //         author_id: id,
-    //         conversation_id: msg_id
-    //     }
-    //     .then(function (response) {
-    //         getMessages()
-    //       })
-    //       .catch(function (error) {
-    //         console.log(error)
-    //       })
+    //     {content: userText}
     //     )
-       
+    // }
+
+    const sendMessage = async (event) => {
+        event.preventDefault()
+        await axios
+        .post(`http://localhost:3001/myVoid/${id}/new_message/${msg_id}`,
+        {
+            content: userText,
+            author_id: id,
+            conversation_id: msg_id
+        }
+
         
+        
+        )
+       
+        getMessages()
         
 
-    // }
+    }
 
     useEffect(() => {
 
@@ -60,11 +58,12 @@ const Messages = (props) => {
         {messages.map((message)=> (
         <li key={message._id} className='messages'>
             <h3>{message.content}</h3>
+            <button>Delete</button>
         </li>
         ))}
-        <form onSubmit={editMessage}>
+        <form onSubmit={sendMessage}>
         <input onChange={handleInputChange}></input>
-        <button type='submit' >Edit</button>
+        <button type='submit' >Send</button>
         </form>        
         </div>
       )
