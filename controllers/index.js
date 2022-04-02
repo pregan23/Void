@@ -14,7 +14,8 @@ res.status(201).json(secondId[0]._id)
 }
 
 const deleteThread = async (req, res) => { 
-    await Conversation.findByIdAndDelete(   req.params._id )
+    const threadId=req.body._id
+    await Conversation.findByIdAndDelete( threadId )
     return res.status(201).send('deleted')
 }
 
@@ -35,12 +36,15 @@ const getConversations = async (req, res) => {
 }
 
 const sendMessage = async (req, res) => {
-    console.log(req.body, 'here is the reqbody')
     const message = await new Message(req.body)
     await message.save()
     console.log('message created')
     return res.status(200).json(message)
 }
+
+// const deleteMessage = async (req, res) => {
+
+// }
 
 const updateMessage = async (req, res) => {
     const { id } = req.params

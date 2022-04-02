@@ -20,6 +20,8 @@ router.get('/myVoid/:id/search/:user_name', controllers.getUserId)
 
 router.post('/myVoid/:id/new_message/:msg_id', controllers.sendMessage)
 
+// router.delete('/myVoid/:id/new_message/:msg_id', controllers.deleteMessage)
+
 router.put('/message/:id', controllers.updateMessage)
 
 

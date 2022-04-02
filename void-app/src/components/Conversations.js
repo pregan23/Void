@@ -38,10 +38,14 @@ const Conversations = (props) => {
 
     
 
-    const deleteConversation = async (id) => {
-
+    const deleteConversation = async (deletedId) => {
+        console.log(deletedId)
         await axios 
-        .delete(`http://localhost:3001/myVoid/${id}`)
+        .delete(`http://localhost:3001/myVoid/${id}`,
+        {
+            _id: {deletedId}
+        }
+        )
         console.log('deleted')
         getConversations()
 
