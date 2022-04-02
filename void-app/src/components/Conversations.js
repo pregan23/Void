@@ -17,11 +17,26 @@ const Conversations = (props) => {
         navigate(`threads/${msgId}`)
     }
 
-    const getSecondId = async () => {
+    const createConversation = async (userId) => {
+        await axios
+        .post(`http://localhost:3001/myVoid/${id}`,
+        {
+            name: (`Conversation with ${props.user.userName} and ${otherUser}`),
+            user_ids: [ props.user._id, userId.data._id ]
+        })
+        console.log('should have worked')
+        getConversations()
+    }
+
+    const getSecondId = async (event) => {
+        event.preventDefault()
         let userId = await axios
         .get(`http://localhost:3001/myVoid/${id}/search/${otherUser}`)
         console.log(userId)
+        createConversation(userId)
     }
+
+    
 
     const deleteConversation = async (id) => {
 
