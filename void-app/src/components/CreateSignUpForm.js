@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import {  Route, Routes, useNavigate } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
 
 const CreateSignUpForm = (props) => {
 
@@ -26,11 +25,8 @@ const CreateSignUpForm = (props) => {
           password: newPassword
         })
         navigate(`/`)
-        // navigate(`/myVoid/${newUser.data._id}`)
         
     }
-
-
 
     return (
         <div className = "form-wrapper">

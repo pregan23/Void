@@ -3,8 +3,6 @@ const Conversation = require('../models/Conversation')
 const Message = require('../models/Message');
 const req = require('express/lib/request');
 
-// const checkPassword = async (req, res) => {}
-
 const getUserId = async (req, res) => {
     
 
@@ -13,20 +11,15 @@ if(!!secondId.length){
     res.status(201).json(secondId[0]._id)
 }
 
-
-
-
 }
 
 const deleteThread = async (req, res) => { 
     try{
-    // const threadId=req.body._id
-    // console.log(req.body[0]._id)
+
     const deleted=await Conversation.findByIdAndDelete( req.body._id )
     if(deleted) {
         return res.status(201).send('deleted')
     }   
-        // console.log(threadId.toString())
         throw new Error('no such conversation')
 }       catch (error) {
     res.status(500).send(error.message)
@@ -57,9 +50,6 @@ const sendMessage = async (req, res) => {
     return res.status(200).json(message)
 }
 
-// const deleteMessage = async (req, res) => {
-
-// }
 
 const updateMessage = async (req, res) => {
     const { id } = req.params
@@ -99,35 +89,19 @@ const createUser = async (req, res) => {
     }
 }
 
-// const getConversations = async (req, res) => {
-//     const threads = await Conversation.find( { user_ids: { $in: req._id}})
-//     return res.status(201).json(threads)
-// }
+
 
 const checkUserName = async (req,res) => {
     try{
     const { userName, password } = req.body
-    // const noUser = await User.find( { userName: {$nin:userName}})
+
     const userExists = await User.find( { userName: {$eq:userName}, password: {$eq:password} })
     console.log(userExists)
-    // const userId = userExists[0]._id
-    // console.log(userId)
+    
     if (!!userExists.length) {
-        // 
-        // getConversations(userId)
+      
         return res.status(201).json(userExists[0])
         
-        
-        // if (userId === undefined) {
-            
-        // }
-        
-        
-        
-        // if (userPass=userExists.password) {
-
-        // }
-    // checkPassword()
     }
     else if(!userExists.length) {
 

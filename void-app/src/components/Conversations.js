@@ -29,8 +29,7 @@ const Conversations = (props) => {
             console.log(userId.data)
         getConversations()
         
-        // console.log('should have worked')
-        // getConversations()
+       
     }
 
     const getSecondId = async (event) => {
@@ -62,7 +61,7 @@ const Conversations = (props) => {
     const getConversations = async () => {
         let threads = await axios
         .get(`http://localhost:3001/myVoid/${id}`)
-        // console.log(threads.data)
+        
         setConversations(threads.data)
     
       }

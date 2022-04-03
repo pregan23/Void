@@ -11,10 +11,7 @@ function App() {
 
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
-//  const [userText, setUserText] = useState('') //what the user types for new message
-  const [edited, setEdited] = useState(false)
-  const [isUser, setIsUser] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   const [user, setUser] = useState('')
   const navigate = useNavigate()
 
@@ -36,14 +33,7 @@ function App() {
     else {
       navigate('/signup')
     }
-    // .catch(function (error) {
-    //   console.log(error)
-    // })
-    // setUserId(res.data)
-    // console.log(res.data)
-    
-
-    
+       
     
   }
 
@@ -75,11 +65,11 @@ function App() {
         
         />} />
         <Route path='myVoid/:id'  element= {
-          // conversations.map((conversation)=> (
+          
             <Conversations
             user={user}
             />
-          // ))
+   
             } />
 
         <Route path='myVoid/:id/threads/:msg_id' element= {

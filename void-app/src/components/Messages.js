@@ -7,7 +7,7 @@ const Messages = (props) => {
     const [messages, setMessages] = useState([])
     const [newMessageText, setNewMessageText] = useState('')
     const [userText, setUserText] = useState('')
-    const [messageId, setMessageId] = useState('')
+    
 
     const { id, msg_id } = useParams()
 
@@ -15,25 +15,15 @@ const Messages = (props) => {
         let correspondence = await axios
         .get(`http://localhost:3001/myVoid/${id}/${msg_id}`)
         setMessages(correspondence.data)
-        // setMessageId(correspondence.data._id) 
+      
     }
 
-    // const getThisMessageId= async () => {
-    //     setMessageId()
-    // }
-
+   
     const handleNewMessageTextChange = (event) => {
         setNewMessageText(event.target.value)
-    
-       
-        
+            
         
     }
-
-    // const handleEditMessage = (event) => {
-    
-    // }
-
 
     const handleInputChange = (event) => {
         setUserText(event.target.value)
@@ -41,7 +31,7 @@ const Messages = (props) => {
     }
 
     const editMessage = async (event, editedId) => {
-        // setMessageId(event.target._id)
+       
         event.preventDefault()
         console.log(editedId)
         await axios
@@ -65,14 +55,11 @@ const Messages = (props) => {
             author_id: id,
             conversation_id: msg_id
         }
-
-        
         
         )
        
         getMessages()
         
-
     }
 
     useEffect(() => {
@@ -98,8 +85,6 @@ const Messages = (props) => {
         </form>        
         </div>
       )
-
-
 
 }
 

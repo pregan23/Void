@@ -5,7 +5,7 @@ const User = new Schema(
     {
         userName: { type: String, required: true },
         password: { type: String, required: true },
-        // conversations: [{ type: Schema.Types.ObjectId, ref: 'Conversation' }]
+        
 
     },
     { timestamps: true },

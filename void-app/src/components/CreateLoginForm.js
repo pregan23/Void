@@ -1,5 +1,5 @@
 import React from 'react'
-// import { useNavigate,Link } from 'react-router-dom'
+
 
 const CreateLoginForm = (props) => {
     return (
@@ -25,10 +25,8 @@ const CreateLoginForm = (props) => {
                     onChange={props.handlePasswordChange}                    
                     />
                 </div>
-                <div className="button-wrapper">
-                    {/* <Link to={'/myVoid'}> */}
-                    <button type="submit">Enter</button>
-                    {/* </Link> */}
+                <div className="button-wrapper">                  
+                    <button type="submit">Enter</button>               
                 </div>
             </form>
         </div>
