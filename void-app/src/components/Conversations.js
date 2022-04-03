@@ -35,10 +35,12 @@ const Conversations = (props) => {
 
     const getSecondId = async (event) => {
         event.preventDefault()
-        let userId = await axios
+        const userId = await axios
         .get(`http://localhost:3001/myVoid/${id}/search/${otherUser}`)
+       
         console.log(userId)
         createConversation(userId)
+
     }
 
     

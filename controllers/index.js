@@ -6,10 +6,15 @@ const req = require('express/lib/request');
 // const checkPassword = async (req, res) => {}
 
 const getUserId = async (req, res) => {
+    
 
 const secondId = await User.find( { userName: {$eq: req.params.user_name} })
+if(!!secondId.length){
+    res.status(201).json(secondId[0]._id)
+}
 
-res.status(201).json(secondId[0]._id)
+
+
 
 }
 
