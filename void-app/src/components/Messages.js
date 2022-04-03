@@ -7,7 +7,7 @@ const Messages = (props) => {
     const [messages, setMessages] = useState([])
     const [newMessageText, setNewMessageText] = useState('')
     const [userText, setUserText] = useState('')
-    const [messageId, setMessageId] = useState([])
+    const [messageId, setMessageId] = useState('')
 
     const { id, msg_id } = useParams()
 
@@ -18,27 +18,36 @@ const Messages = (props) => {
         // setMessageId(correspondence.data._id) 
     }
 
+    // const getThisMessageId= async () => {
+    //     setMessageId()
+    // }
+
     const handleNewMessageTextChange = (event) => {
         setNewMessageText(event.target.value)
+    
+       
+        
         
     }
 
     // const handleEditMessage = (event) => {
-       
+    
     // }
 
 
     const handleInputChange = (event) => {
         setUserText(event.target.value)
+        
     }
 
-    const editMessage = async (event) => {
-        setMessageId(event.target._id)
+    const editMessage = async (event, editedId) => {
+        // setMessageId(event.target._id)
         event.preventDefault()
+        console.log(editedId)
         await axios
-        .put(`http://localhost:3001/message/${msg_id}`,
+        .put(`http://localhost:3001/message/${editedId}`,
        {
-           _id: messageId,
+           
            content: newMessageText
         }
         )
@@ -76,9 +85,9 @@ const Messages = (props) => {
         {messages.map((message)=> (
         <li key={message._id} className='messages'>
             <h3>{message.content}</h3>
-            <form className='form-wrapper'  onSubmit={()=>{editMessage(message._id)}}>
+            <form className='form-wrapper'  onSubmit={(e)=>editMessage(e,message._id)}>
             <input onChange={handleNewMessageTextChange}></input>
-            <button type='submit'>Edit</button>
+            <button type='submit' >Edit</button>
             </form>
         </li>
         ))}

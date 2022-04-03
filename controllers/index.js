@@ -58,6 +58,7 @@ const sendMessage = async (req, res) => {
 
 const updateMessage = async (req, res) => {
     const { id } = req.params
+    console.log(req.params.id)
     console.log(req.body, 'here is the reqbody')
     const edit = await Message.findByIdAndUpdate( id, {"content": req.body.content} )
     if (edit) {
