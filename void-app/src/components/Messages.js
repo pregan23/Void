@@ -48,7 +48,7 @@ const Messages = (props) => {
         .put(`http://localhost:3001/message/${editedId}`,
        {
            
-           content: newMessageText
+           content: `${props.user.userName}: ${newMessageText}`
         }
         )
 
