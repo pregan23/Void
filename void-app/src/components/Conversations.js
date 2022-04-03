@@ -81,7 +81,7 @@ const Conversations = (props) => {
         <div>
         {conversations.map((conversation)=> (
         <li key={conversation._id} className='conversations'>
-            <h3 onClick={() =>handleClick(conversation._id)} >{conversation.name}</h3>
+            <h3 onClick={() =>handleClick(conversation._id)} className='conversation'>{conversation.name}</h3>
             <button onClick={() => deleteConversation(conversation._id)} >Delete</button>
 
             

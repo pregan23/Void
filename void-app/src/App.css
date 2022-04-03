@@ -1,7 +1,5 @@
 body {
   display: flex;
-
-
   background-color: rgb(79, 115, 147);
   margin: 0 auto;
   justify-content: center;
@@ -9,6 +7,7 @@ body {
 
 .App {
   text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
 
@@ -44,6 +43,14 @@ h3 {
   width: 500px;
   background-color: rgb(183, 144, 182);
 
+}
+
+.conversation {
+  cursor: pointer
+}
+
+button {
+  cursor: pointer;
 }
 
 .messages {

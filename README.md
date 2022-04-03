@@ -13,7 +13,8 @@ A space for conversation
 
 ### **_Screenshots_**
 
-[1](https://imgur.com/a/WVQXBhl)
+[1](https://imgur.com/iZKDAnv)
+[2](https://imgur.com/wvMV6ux)
 
 ### Coming soon! 
 
@@ -52,6 +53,6 @@ A space for conversation
 
 ### **_Credits_**
 
-Coming Soon!
+A huge thank you to John, Michael, and Nghiem.  Your help has been instrumental.
 
 ### **Knowledge and Knowhow**: [General Assembly](https://generalassemb.ly/), [Github](https://github.com/), [W3 Schools](https://www.w3schools.com/), [MDN](https://developer.mozilla.org/en-US/)
