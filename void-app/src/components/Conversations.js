@@ -22,10 +22,11 @@ const Conversations = (props) => {
         .post(`http://localhost:3001/myVoid/${id}`,
         {
             name: (`Conversation with ${props.user.userName} and ${otherUser}`),
-            user_ids: [ props.user._id, userId.data._id ]
+            user_ids: [ props.user._id, userId.data ]
         })
         
             console.log('should have worked')
+            console.log(userId.data)
         getConversations()
         
         // console.log('should have worked')

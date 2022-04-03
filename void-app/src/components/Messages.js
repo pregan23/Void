@@ -57,6 +57,7 @@ const Messages = (props) => {
 
     const sendMessage = async (event) => {
         event.preventDefault()
+        event.target.reset()
         await axios
         .post(`http://localhost:3001/myVoid/${id}/new_message/${msg_id}`,
         {
