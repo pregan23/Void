@@ -33,6 +33,7 @@ const Messages = (props) => {
     const editMessage = async (event, editedId) => {
        
         event.preventDefault()
+        event.target.reset()
         console.log(editedId)
         await axios
         .put(`http://localhost:3001/message/${editedId}`,
