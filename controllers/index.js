@@ -60,8 +60,12 @@ const updateMessage = async (req, res) => {
     const { id } = req.params
     console.log(req.body, 'here is the reqbody')
     const edit = await Message.findByIdAndUpdate( id, {"content": req.body.content} )
-    console.log('message edited')
-    return res.status(200).json(edit)
+    if (edit) {
+        console.log('message edited')
+        return res.status(200).json(edit) 
+    }
+    
+    return res.status(500).send('no dice')
 }
 
 const createConversation = async (req, res) => {

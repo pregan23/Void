@@ -20,18 +20,31 @@ const Messages = (props) => {
 
     const handleNewMessageTextChange = (event) => {
         setNewMessageText(event.target.value)
+        
     }
+
+    // const handleEditMessage = (event) => {
+       
+    // }
+
 
     const handleInputChange = (event) => {
         setUserText(event.target.value)
     }
 
-    // const editMessage = async () => {
-    //     await axios .put(`http://localhost:3001/message/62470449c2b054a90622ac32`,
-       
-    //     {content: userText}
-    //     )
-    // }
+    const editMessage = async (event) => {
+        setMessageId(event.target._id)
+        event.preventDefault()
+        await axios
+        .put(`http://localhost:3001/message/${msg_id}`,
+       {
+           _id: messageId,
+           content: newMessageText
+        }
+        )
+
+        getMessages()
+    }
 
     const sendMessage = async (event) => {
         event.preventDefault()
@@ -63,11 +76,10 @@ const Messages = (props) => {
         {messages.map((message)=> (
         <li key={message._id} className='messages'>
             <h3>{message.content}</h3>
-            {/* <form className='form-wrapper' onSubmit={editMessage}>
+            <form className='form-wrapper'  onSubmit={()=>{editMessage(message._id)}}>
             <input onChange={handleNewMessageTextChange}></input>
-            <button>Edit</button>
-            </form> */}
-            <button>Delete</button>
+            <button type='submit'>Edit</button>
+            </form>
         </li>
         ))}
         <form onSubmit={sendMessage}>
