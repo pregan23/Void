@@ -14,9 +14,19 @@ res.status(201).json(secondId[0]._id)
 }
 
 const deleteThread = async (req, res) => { 
-    const threadId=req.body._id
-    await Conversation.findByIdAndDelete( threadId )
-    return res.status(201).send('deleted')
+    try{
+    // const threadId=req.body._id
+    // console.log(req.body[0]._id)
+    const deleted=await Conversation.findByIdAndDelete( req.body._id )
+    if(deleted) {
+        return res.status(201).send('deleted')
+    }   
+        // console.log(threadId.toString())
+        throw new Error('no such conversation')
+}       catch (error) {
+    res.status(500).send(error.message)
+}
+
 }
 
 const getMessages = async (req, res) => {
