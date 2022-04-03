@@ -8,8 +8,8 @@ const req = require('express/lib/request');
 const getUserId = async (req, res) => {
 
 const secondId = await User.find( { userName: {$eq: req.params.user_name} })
-res.status(201).json(secondId[0]._id)
 
+res.status(201).json(secondId[0]._id)
 
 }
 
@@ -58,8 +58,6 @@ const sendMessage = async (req, res) => {
 
 const updateMessage = async (req, res) => {
     const { id } = req.params
-    console.log(req.params.id)
-    console.log(req.body, 'here is the reqbody')
     const edit = await Message.findByIdAndUpdate( id, {"content": req.body.content} )
     if (edit) {
         console.log('message edited')
@@ -70,10 +68,17 @@ const updateMessage = async (req, res) => {
 }
 
 const createConversation = async (req, res) => {
+    try{
     const conversation = await new Conversation(req.body)
     await conversation.save()
-    console.log('Conversation created')
-    return res.status(201).json({conversation})
+
+    if(conversation) {console.log('Conversation created')
+    return res.status(201).json({conversation})};}
+    catch (error) {
+        return res.status(204).send('not found')
+    }
+   
+    
 }
 
 const createUser = async (req, res) => {

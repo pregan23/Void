@@ -85,6 +85,7 @@ function App() {
         <Route path='myVoid/:id/threads/:msg_id' element= {
           
             <Messages 
+            user={user}
 
           />
         } />

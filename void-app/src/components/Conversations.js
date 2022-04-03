@@ -24,8 +24,12 @@ const Conversations = (props) => {
             name: (`Conversation with ${props.user.userName} and ${otherUser}`),
             user_ids: [ props.user._id, userId.data._id ]
         })
-        console.log('should have worked')
+        
+            console.log('should have worked')
         getConversations()
+        
+        // console.log('should have worked')
+        // getConversations()
     }
 
     const getSecondId = async (event) => {

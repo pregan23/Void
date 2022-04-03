@@ -60,7 +60,7 @@ const Messages = (props) => {
         await axios
         .post(`http://localhost:3001/myVoid/${id}/new_message/${msg_id}`,
         {
-            content: userText,
+            content: `${props.user.userName}: ${userText}`,
             author_id: id,
             conversation_id: msg_id
         }
@@ -86,7 +86,7 @@ const Messages = (props) => {
         <li key={message._id} className='messages'>
             <h3>{message.content}</h3>
             <form className='form-wrapper'  onSubmit={(e)=>editMessage(e,message._id)}>
-            <input onChange={handleNewMessageTextChange}></input>
+            <input onChange={handleNewMessageTextChange} placeholder='Enter new text for above message'></input>
             <button type='submit' >Edit</button>
             </form>
         </li>
