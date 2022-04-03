@@ -1,22 +1,25 @@
 body {
-  /* color: #21807b;
-  background-color: rgb(75, 73, 73); */
+  display: flex;
+
+
+  background-color: rgb(79, 115, 147);
   margin: 0 auto;
-  align-content: center;
+  justify-content: center;
 }
 
 .App {
-  display: flex;
+  text-align: center;
+  /* display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-content: center;
+  justify-content: center; */
   /* background-color: rgb(75, 73, 73); */
 }
 
 li {
   list-style: none;
-  object-position: center;
-  width: 75%;
+  /* object-position: center;
+  width: 75%; */
 
 }
 
@@ -26,11 +29,11 @@ li {
   pointer-events: none;
 } */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 /* .App-header {
   background-color: #282c34;
@@ -56,16 +59,45 @@ li {
     transform: rotate(360deg);
   }
 } */
-div {
+/* div {
+  text-align: center;
+} */
+
+input {
+  width: 250px;
   text-align: center;
 }
 
+.smaller-input-stuff {
+  font-size: 10px;
+  height: 7px
+}
+
+h3 {
+  border-bottom: solid rgb(79, 115, 147) 1.5px;
+
+}
 
 .form-wrapper,
 .conversations,
 .messages {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-radius: 35px;
 
+  width: 500px;
   background-color: rgb(183, 144, 182);
-  width: 75%;
-  text-align: center;
+  /* width: 75%; */
+  /* text-align: center; */
+}
+
+.messages {
+  font-size: x-small
+}
+
+.new-message {
+  border-top: solid rgb(79, 115, 147) 1.5px;
 }

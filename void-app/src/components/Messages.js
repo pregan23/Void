@@ -87,13 +87,13 @@ const Messages = (props) => {
         <li key={message._id} className='messages'>
             <h3>{message.content}</h3>
             <form className='form-wrapper'  onSubmit={(e)=>editMessage(e,message._id)}>
-            <input onChange={handleNewMessageTextChange} placeholder='Enter new text for above message'></input>
+            <input className='smaller-input-stuff' onChange={handleNewMessageTextChange} placeholder='Enter new text for above message'></input>
             <button type='submit' >Edit</button>
             </form>
         </li>
         ))}
-        <form onSubmit={sendMessage}>
-        <input onChange={handleInputChange}></input>
+        <form onSubmit={sendMessage} className='form-wrapper, new-message'>
+        <input onChange={handleInputChange} placeholder='Send New Message'></input>
         <button type='submit' >Send</button>
         </form>        
         </div>

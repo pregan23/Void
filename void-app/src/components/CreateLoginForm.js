@@ -27,7 +27,7 @@ const CreateLoginForm = (props) => {
                 </div>
                 <div className="button-wrapper">
                     {/* <Link to={'/myVoid'}> */}
-                    <button type="submit">Submit</button>
+                    <button type="submit">Enter</button>
                     {/* </Link> */}
                 </div>
             </form>
